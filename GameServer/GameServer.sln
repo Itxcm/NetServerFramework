@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "GameServer.csproj", "{187960C6-43F1-47FB-BCAD-3F2548A0D06E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITXCM", "..\ITXCM\ITXCM.csproj", "{53467F4C-D6C0-43EF-89A5-1CD719726C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protocol", "..\Protocol\Protocol.csproj", "{E8CB43DC-C316-4FE0-B374-3525923B5FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{187960C6-43F1-47FB-BCAD-3F2548A0D06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187960C6-43F1-47FB-BCAD-3F2548A0D06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187960C6-43F1-47FB-BCAD-3F2548A0D06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187960C6-43F1-47FB-BCAD-3F2548A0D06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53467F4C-D6C0-43EF-89A5-1CD719726C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53467F4C-D6C0-43EF-89A5-1CD719726C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53467F4C-D6C0-43EF-89A5-1CD719726C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53467F4C-D6C0-43EF-89A5-1CD719726C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CB43DC-C316-4FE0-B374-3525923B5FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CB43DC-C316-4FE0-B374-3525923B5FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CB43DC-C316-4FE0-B374-3525923B5FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CB43DC-C316-4FE0-B374-3525923B5FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2481E508-2229-4AA7-A335-45B53A3BBC65}
+	EndGlobalSection
+EndGlobal

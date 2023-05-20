@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package SkillBridge.Message;
+
+option csharp_namespace = "SkillBridge.Message";
+option cc_enable_arenas = true;
+
+message NetMessage{
+	NetMessageRequest Request = 1;
+	NetMessageResponse Response = 2;
+}
+
+message NetMessageRequest{
+	TestRequestProto testRequestProto = 1;
+}
+
+message NetMessageResponse{
+	TestResponseProto testResponseProto = 1;
+}
+
+message TestRequestProto{
+	string testContent=1;
+}
+
+message TestResponseProto{
+	string res=1;
+}
+
