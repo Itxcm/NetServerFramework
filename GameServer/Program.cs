@@ -22,6 +22,7 @@ namespace GameServer
             Log.Info("Game Server Exiting...");
             server.Stop();
             Log.Info("Game Server Exited");
+
         }
     }
 }
