@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -58,31 +60,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities.Context.cs">
+    <Compile Include="EntitiesDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Entities.Context.tt</DependentUpon>
+      <DependentUpon>EntitiesDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities.cs">
+    <Compile Include="EntitiesDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Entities.tt</DependentUpon>
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntitiesDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntitiesDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity1.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="MVC\Entities\Character.cs" />
+    <Compile Include="MVC\Entities\CharacterBase.cs" />
+    <Compile Include="MVC\Entities\Entity.cs" />
+    <Compile Include="MVC\Entities\Monster.cs" />
     <Compile Include="GameServer.cs" />
+    <Compile Include="MVC\Managers\CharacterManager.cs" />
+    <Compile Include="MVC\Managers\EntityManager.cs" />
+    <Compile Include="MVC\Managers\EquipManager.cs" />
+    <Compile Include="MVC\Managers\FriendManager.cs" />
+    <Compile Include="MVC\Managers\GuildManager.cs" />
+    <Compile Include="MVC\Managers\ItemManager.cs" />
+    <Compile Include="MVC\Managers\MapManager.cs" />
+    <Compile Include="MVC\Managers\MonsterManger.cs" />
+    <Compile Include="MVC\Managers\QuestManager.cs" />
+    <Compile Include="MVC\Managers\SessionManager.cs" />
+    <Compile Include="MVC\Managers\ShopManager.cs" />
+    <Compile Include="MVC\Managers\Spawner.cs" />
+    <Compile Include="MVC\Managers\SpawnManger.cs" />
+    <Compile Include="MVC\Managers\StatusManager.cs" />
+    <Compile Include="MVC\Managers\TeamManager.cs" />
+    <Compile Include="MVC\Models\Guild.cs" />
+    <Compile Include="MVC\Models\Item.cs" />
+    <Compile Include="MVC\Models\Map.cs" />
+    <Compile Include="MVC\Models\Team.cs" />
+    <Compile Include="MVC\Sercices\BagService.cs" />
+    <Compile Include="MVC\Sercices\FriendService.cs" />
+    <Compile Include="MVC\Sercices\GuildService.cs" />
+    <Compile Include="MVC\Sercices\ItemService.cs" />
+    <Compile Include="MVC\Sercices\MapService.cs" />
+    <Compile Include="MVC\Sercices\QuestService.cs" />
+    <Compile Include="MVC\Sercices\TeamService.cs" />
     <Compile Include="Network\ExtensionMethods.cs" />
     <Compile Include="Network\INetSession.cs" />
     <Compile Include="Network\IPostResponse.cs" />
     <Compile Include="Network\NetConnection.cs" />
     <Compile Include="Network\NetEventArgs.cs" />
-    <Compile Include="Network\NetService.cs" />
+    <Compile Include="MVC\Sercices\NetService.cs" />
     <Compile Include="Network\NetSession.cs" />
     <Compile Include="Network\TcpSocketListener.cs" />
     <Compile Include="Program.cs" />
@@ -92,8 +121,38 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Sercices\DBService.cs" />
-    <Compile Include="Sercices\TestServer.cs" />
+    <Compile Include="MVC\Sercices\DBService.cs" />
+    <Compile Include="MVC\Sercices\UserSerevice.cs" />
+    <Compile Include="TCharacter.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCharacterBag.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCharacterFriend.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCharacterItem.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCharacterQuest.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TGuild.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TGuildApply.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TGuildMember.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPlayer.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TUser.cs">
+      <DependentUpon>EntitiesDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CommandHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,14 +171,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities.Context.tt">
+    <Content Include="EntitiesDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Entities.Context.cs</LastGenOutput>
+      <LastGenOutput>EntitiesDataModel.Context.cs</LastGenOutput>
       <DependentUpon>EntitiesDataModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Entities.tt">
+    <Content Include="EntitiesDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Entities.cs</LastGenOutput>
+      <LastGenOutput>EntitiesDataModel.cs</LastGenOutput>
       <DependentUpon>EntitiesDataModel.edmx</DependentUpon>
     </Content>
   </ItemGroup>

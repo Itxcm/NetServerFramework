@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace ITXCM
+namespace ITXCM.Client.Services
 {
     /// <summary>
     ///  网络服务层
@@ -70,7 +70,6 @@ namespace ITXCM
             return false;
         }
 
-        #region 外部方法
         // 检测网络并发送
         public void CheckConnentAndSend(NetMessage msg)
         {
@@ -85,6 +84,8 @@ namespace ITXCM
                 ReConnectToServer();
             }
         }
+
+        #region 外部方法
 
         // 重接服务器
         public void ReConnectToServer()

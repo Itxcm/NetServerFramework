@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace Network
+namespace GameServer.Network
 {
     /// <summary>
     /// Listens for socket connection on a given address and port.

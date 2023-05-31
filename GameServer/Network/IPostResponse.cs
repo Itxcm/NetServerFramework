@@ -1,6 +1,6 @@
 ﻿using SkillBridge.Message;
 
-namespace Network
+namespace GameServer.Network
 {
     public interface IPostResponser
     {

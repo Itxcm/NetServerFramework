@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using ITXCM;
 
-namespace Network
+namespace GameServer.Network
 {
     /// <summary>
     /// A connection to our server.

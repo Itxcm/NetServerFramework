@@ -34,6 +34,9 @@
     <Reference Include="log4net">
       <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\GameServer\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\Lib\protobuf-net.dll</HintPath>
     </Reference>
@@ -50,16 +53,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Construct\Vector3Int.cs" />
+    <Compile Include="Data\DataManager.cs" />
+    <Compile Include="Client\MVC\Models\User.cs" />
+    <Compile Include="Client\MVC\Services\UserService.cs" />
+    <Compile Include="Data\Defeine\CharacterDefine.cs" />
+    <Compile Include="Data\Defeine\EquipDefine.cs" />
+    <Compile Include="Data\Defeine\ItemDefine.cs" />
+    <Compile Include="Data\Defeine\MapDefine.cs" />
+    <Compile Include="Data\Defeine\NpcDefine.cs" />
+    <Compile Include="Data\Defeine\QuestDefine.cs" />
+    <Compile Include="Data\Defeine\ShopDefine.cs" />
+    <Compile Include="Data\Defeine\ShopItemDefine.cs" />
+    <Compile Include="Data\Defeine\SpawnPointDefine.cs" />
+    <Compile Include="Data\Defeine\SpawnRuleDefine.cs" />
+    <Compile Include="Data\Defeine\TeleporterDefine.cs" />
     <Compile Include="Network\MessageDispatch.cs" />
     <Compile Include="Network\MessageDistributer.cs" />
     <Compile Include="Network\PackageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnityTools\NetClient.cs" />
-    <Compile Include="UnityTools\NetService.cs" />
-    <Compile Include="UnityTools\UnityLogger.cs" />
+    <Compile Include="Client\Component\NetClient.cs" />
+    <Compile Include="Client\MVC\Services\NetService.cs" />
+    <Compile Include="Client\UnityLogger.cs" />
     <Compile Include="Utils\Log.cs" />
     <Compile Include="Utils\MathUtil.cs" />
-    <Compile Include="UnityTools\MonoSingleton.cs" />
+    <Compile Include="Client\MonoSingleton.cs" />
     <Compile Include="Utils\Singleton.cs" />
     <Compile Include="Utils\TimeUtil.cs" />
   </ItemGroup>
@@ -68,6 +86,12 @@
       <Project>{e8cb43dc-c316-4fe0-b374-3525923b5ffc}</Project>
       <Name>Protocol</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Client\MVC\Managers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

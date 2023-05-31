@@ -12,8 +12,13 @@ namespace GameServer
     using System;
     using System.Collections.Generic;
     
-    public partial class Entity1
+    public partial class TUser
     {
-        public int Id { get; set; }
+        public long ID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Nullable<System.DateTime> RegisterDate { get; set; }
+    
+        public virtual TPlayer Player { get; set; }
     }
 }

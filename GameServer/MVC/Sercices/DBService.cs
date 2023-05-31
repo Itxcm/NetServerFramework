@@ -8,6 +8,7 @@ namespace GameServer.Services
      对于删除数据只能通过操作数据库保存 : 即只能DBService.Instance.Entities.CharacterFriends.Remove();
 
      */
+
     internal class DBService : Singleton<DBService>
     {
         private EntitiesDataModelContainer entities; // 访问数据库的实体

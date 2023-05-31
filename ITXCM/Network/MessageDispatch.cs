@@ -9,7 +9,7 @@
         /// <param name="message"></param>
         public void Dispatch(T sender, SkillBridge.Message.NetMessageResponse message)
         {
-            if (message.testResponseProto != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.testResponseProto); }
+
         }
 
         /// <summary>
@@ -19,7 +19,7 @@
         /// <param name="message"></param>
         public void Dispatch(T sender, SkillBridge.Message.NetMessageRequest message)
         {
-            if (message.testRequestProto != null) { MessageDistributer<T>.Instance.RaiseEvent(sender, message.testRequestProto); }
+
         }
     }
 }

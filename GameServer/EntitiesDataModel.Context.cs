@@ -25,6 +25,15 @@ namespace GameServer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Entity1> Entity1Set { get; set; }
+        public virtual DbSet<TUser> Users { get; set; }
+        public virtual DbSet<TPlayer> Players { get; set; }
+        public virtual DbSet<TCharacter> Characters { get; set; }
+        public virtual DbSet<TCharacterItem> CharacterItems { get; set; }
+        public virtual DbSet<TCharacterBag> CharacterBags { get; set; }
+        public virtual DbSet<TCharacterQuest> CharacterQuests { get; set; }
+        public virtual DbSet<TCharacterFriend> CharacterFriends { get; set; }
+        public virtual DbSet<TGuild> Guilds { get; set; }
+        public virtual DbSet<TGuildMember> GuildMembers { get; set; }
+        public virtual DbSet<TGuildApply> GuildApplies { get; set; }
     }
 }

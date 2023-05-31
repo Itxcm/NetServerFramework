@@ -1,8 +1,7 @@
-﻿using GameServer.Services;
-using System.Threading;
+﻿using System.Threading;
+using GameServer.Services;
 using ITXCM;
-using NetService = Network.NetService;
-using GameServer.Sercices;
+using Services;
 
 namespace GameServer
 {
@@ -19,7 +18,6 @@ namespace GameServer
             network.Init(Port);
 
             DBService.Instance.Init();
-            TestServer.Instance.Init();
 
             thread = new Thread(new ThreadStart(this.Update));
             return true;

@@ -1,8 +1,9 @@
 ﻿using ITXCM;
 using System.Net;
 using System.Net.Sockets;
+using GameServer.Network;
 
-namespace Network
+namespace Services //TODO 这里命名空间有点问题
 {
     internal class NetService
     {
