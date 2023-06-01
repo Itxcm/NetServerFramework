@@ -18,6 +18,7 @@ namespace GameServer
             network.Init(Port);
 
             DBService.Instance.Init();
+            UserSerevice.Instance.Init();
 
             thread = new Thread(new ThreadStart(this.Update));
             return true;

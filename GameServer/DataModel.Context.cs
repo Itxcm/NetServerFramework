@@ -13,10 +13,10 @@ namespace GameServer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EntitiesDataModelContainer : DbContext
+    public partial class DataModelContainer : DbContext
     {
-        public EntitiesDataModelContainer()
-            : base("name=EntitiesDataModelContainer")
+        public DataModelContainer()
+            : base("name=DataModelContainer")
         {
         }
     

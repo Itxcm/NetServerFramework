@@ -50,11 +50,10 @@ namespace GameServer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=119.3.223.39;Initial Catalog=Extremeworld;Persist Security Info=True;" +
-            "User ID=sa")]
-        public string ExtremeWorld {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=119.3.223.39;User ID=sa;Password=Xcm18186365652")]
+        public string ITXCM {
             get {
-                return ((string)(this["ExtremeWorld"]));
+                return ((string)(this["ITXCM"]));
             }
         }
     }

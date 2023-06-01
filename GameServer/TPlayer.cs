@@ -22,7 +22,7 @@ namespace GameServer
     
         public int ID { get; set; }
     
-        public virtual TUser TUser { get; set; }
+        public virtual TUser Owner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TCharacter> Characters { get; set; }
     }

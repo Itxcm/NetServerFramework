@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66a0f4bd402347fc9442a36fe36de7d2" Name="Diagram1" ZoomLevel="66" >
+        <EntityTypeShape EntityType="DataModel.TUser" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TPlayer" Width="1.5" PointX="2.625" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TCharacter" Width="1.5" PointX="4.5" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TCharacterItem" Width="1.5" PointX="6.875" PointY="1.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TCharacterBag" Width="1.5" PointX="6.875" PointY="2" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TCharacterQuest" Width="1.5" PointX="6.875" PointY="2.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TCharacterFriend" Width="1.5" PointX="6.875" PointY="3" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TGuild" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TGuildMember" Width="1.5" PointX="2.625" PointY="3.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.TGuildApply" Width="1.5" PointX="2.625" PointY="3.75" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.UserPlayer" />
+        <AssociationConnector Association="DataModel.PlayerCharacter" />
+        <AssociationConnector Association="DataModel.CharacterItem" />
+        <AssociationConnector Association="DataModel.CharacterBag" />
+        <AssociationConnector Association="DataModel.CharacterQuest" />
+        <AssociationConnector Association="DataModel.CharacterFriend" />
+        <AssociationConnector Association="DataModel.GuildMember" />
+        <AssociationConnector Association="DataModel.GuildApply" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -11,11 +11,11 @@ namespace GameServer.Services
 
     internal class DBService : Singleton<DBService>
     {
-        private EntitiesDataModelContainer entities; // 访问数据库的实体
+        private DataModelContainer entities; // 访问数据库的实体
 
-        public EntitiesDataModelContainer Entities => entities;
+        public DataModelContainer Entities => entities;
 
-        public void Init() => entities = new EntitiesDataModelContainer();
+        public void Init() => entities = new DataModelContainer();
 
         public void Save(bool async = false)
         {

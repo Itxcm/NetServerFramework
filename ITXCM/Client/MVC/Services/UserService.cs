@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace ITXCM.Client.Services
 {
-    internal class UserService : Singleton<UserService>, IDisposable
+    public class UserService : Singleton<UserService>, IDisposable
     {
         public void Init()
         { }

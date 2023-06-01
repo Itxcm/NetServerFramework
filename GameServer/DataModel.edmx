@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Users" EntityType="DataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players" EntityType="DataModel.Store.Players" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Characters" EntityType="DataModel.Store.Characters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CharacterItems" EntityType="DataModel.Store.CharacterItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CharacterBags" EntityType="DataModel.Store.CharacterBags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CharacterQuests" EntityType="DataModel.Store.CharacterQuests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CharacterFriends" EntityType="DataModel.Store.CharacterFriends" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Guilds" EntityType="DataModel.Store.Guilds" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GuildMembers" EntityType="DataModel.Store.GuildMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GuildApplies" EntityType="DataModel.Store.GuildApplies" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserPlayer" Association="DataModel.Store.UserPlayer">
+      <End Role="TUser" EntitySet="Users" />
+      <End Role="TPlayer" EntitySet="Players" />
+    </AssociationSet>
+    <AssociationSet Name="PlayerCharacter" Association="DataModel.Store.PlayerCharacter">
+      <End Role="TPlayer" EntitySet="Players" />
+      <End Role="TCharacter" EntitySet="Characters" />
+    </AssociationSet>
+    <AssociationSet Name="CharacterItem" Association="DataModel.Store.CharacterItem">
+      <End Role="TCharacter" EntitySet="Characters" />
+      <End Role="TCharacterItem" EntitySet="CharacterItems" />
+    </AssociationSet>
+    <AssociationSet Name="CharacterBag" Association="DataModel.Store.CharacterBag">
+      <End Role="TCharacter" EntitySet="Characters" />
+      <End Role="TCharacterBag" EntitySet="CharacterBags" />
+    </AssociationSet>
+    <AssociationSet Name="CharacterQuest" Association="DataModel.Store.CharacterQuest">
+      <End Role="TCharacter" EntitySet="Characters" />
+      <End Role="TCharacterQuest" EntitySet="CharacterQuests" />
+    </AssociationSet>
+    <AssociationSet Name="CharacterFriend" Association="DataModel.Store.CharacterFriend">
+      <End Role="TCharacter" EntitySet="Characters" />
+      <End Role="TCharacterFriend" EntitySet="CharacterFriends" />
+    </AssociationSet>
+    <AssociationSet Name="GuildMember" Association="DataModel.Store.GuildMember">
+      <End Role="TGuild" EntitySet="Guilds" />
+      <End Role="TGuildMember" EntitySet="GuildMembers" />
+    </AssociationSet>
+    <AssociationSet Name="GuildApply" Association="DataModel.Store.GuildApply">
+      <End Role="TGuild" EntitySet="Guilds" />
+      <End Role="TGuildApply" EntitySet="GuildApplies" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="true" />
+    <Property Name="Player_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Characters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Class" Type="int" Nullable="false" />
+    <Property Name="Exp" Type="bigint" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Gold" Type="bigint" Nullable="false" />
+    <Property Name="Equips" Type="binary" Nullable="false" MaxLength="28" />
+    <Property Name="MapID" Type="int" Nullable="false" DefaultValue="1" />
+    <Property Name="MapPosX" Type="int" Nullable="false" />
+    <Property Name="MapPosY" Type="int" Nullable="false" />
+    <Property Name="MapPosZ" Type="int" Nullable="false" />
+    <Property Name="GuildId" Type="int" Nullable="false" />
+    <Property Name="Owner_ID" Type="int" Nullable="false" />
+    <Property Name="Bag_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CharacterID" Type="int" Nullable="false" />
+    <Property Name="ItemID" Type="int" Nullable="false" />
+    <Property Name="ItemCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterBags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Items" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Unlocked" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterQuests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CharacterID" Type="int" Nullable="false" />
+    <Property Name="QuestID" Type="int" Nullable="false" />
+    <Property Name="Target1" Type="int" Nullable="false" />
+    <Property Name="Target2" Type="int" Nullable="false" />
+    <Property Name="Target3" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterFriends">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CharacterID" Type="int" Nullable="false" />
+    <Property Name="FriendID" Type="int" Nullable="false" />
+    <Property Name="FriendName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Class" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Guilds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LeaderID" Type="int" Nullable="false" />
+    <Property Name="LeaderName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Notice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GuildMembers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuildId" Type="int" Nullable="false" />
+    <Property Name="CharacterId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Class" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Title" Type="int" Nullable="false" />
+    <Property Name="JoinTime" Type="datetime" Nullable="false" />
+    <Property Name="LastTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GuildApplies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuildId" Type="int" Nullable="false" />
+    <Property Name="CharacterId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Class" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="ApplyTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="UserPlayer">
+    <End Role="TUser" Type="DataModel.Store.Users" Multiplicity="*" />
+    <End Role="TPlayer" Type="DataModel.Store.Players" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TPlayer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TUser">
+        <PropertyRef Name="Player_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayerCharacter">
+    <End Role="TPlayer" Type="DataModel.Store.Players" Multiplicity="1" />
+    <End Role="TCharacter" Type="DataModel.Store.Characters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPlayer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCharacter">
+        <PropertyRef Name="Owner_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CharacterItem">
+    <End Role="TCharacter" Type="DataModel.Store.Characters" Multiplicity="1" />
+    <End Role="TCharacterItem" Type="DataModel.Store.CharacterItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCharacter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCharacterItem">
+        <PropertyRef Name="CharacterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CharacterBag">
+    <End Role="TCharacter" Type="DataModel.Store.Characters" Multiplicity="*" />
+    <End Role="TCharacterBag" Type="DataModel.Store.CharacterBags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TCharacterBag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TCharacter">
+        <PropertyRef Name="Bag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CharacterQuest">
+    <End Role="TCharacter" Type="DataModel.Store.Characters" Multiplicity="1" />
+    <End Role="TCharacterQuest" Type="DataModel.Store.CharacterQuests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCharacter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCharacterQuest">
+        <PropertyRef Name="CharacterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CharacterFriend">
+    <End Role="TCharacter" Type="DataModel.Store.Characters" Multiplicity="1" />
+    <End Role="TCharacterFriend" Type="DataModel.Store.CharacterFriends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCharacter">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCharacterFriend">
+        <PropertyRef Name="CharacterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuildMember">
+    <End Role="TGuild" Type="DataModel.Store.Guilds" Multiplicity="1" />
+    <End Role="TGuildMember" Type="DataModel.Store.GuildMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TGuild">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TGuildMember">
+        <PropertyRef Name="GuildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuildApply">
+    <End Role="TGuild" Type="DataModel.Store.Guilds" Multiplicity="1" />
+    <End Role="TGuildApply" Type="DataModel.Store.GuildApplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TGuild">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TGuildApply">
+        <PropertyRef Name="GuildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="DataModel.TUser" />
+          <EntitySet Name="Players" EntityType="DataModel.TPlayer" />
+          <EntitySet Name="Characters" EntityType="DataModel.TCharacter" />
+          <EntitySet Name="CharacterItems" EntityType="DataModel.TCharacterItem" />
+          <EntitySet Name="CharacterBags" EntityType="DataModel.TCharacterBag" />
+          <EntitySet Name="CharacterQuests" EntityType="DataModel.TCharacterQuest" />
+          <EntitySet Name="CharacterFriends" EntityType="DataModel.TCharacterFriend" />
+          <EntitySet Name="Guilds" EntityType="DataModel.TGuild" />
+          <EntitySet Name="GuildMembers" EntityType="DataModel.TGuildMember" />
+          <EntitySet Name="GuildApplies" EntityType="DataModel.TGuildApply" />
+          <AssociationSet Name="UserPlayer" Association="DataModel.UserPlayer">
+            <End Role="TUser" EntitySet="Users" />
+            <End Role="TPlayer" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerCharacter" Association="DataModel.PlayerCharacter">
+            <End Role="TPlayer" EntitySet="Players" />
+            <End Role="TCharacter" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="CharacterItem" Association="DataModel.CharacterItem">
+            <End Role="TCharacter" EntitySet="Characters" />
+            <End Role="TCharacterItem" EntitySet="CharacterItems" />
+          </AssociationSet>
+          <AssociationSet Name="CharacterBag" Association="DataModel.CharacterBag">
+            <End Role="TCharacter" EntitySet="Characters" />
+            <End Role="TCharacterBag" EntitySet="CharacterBags" />
+          </AssociationSet>
+          <AssociationSet Name="CharacterQuest" Association="DataModel.CharacterQuest">
+            <End Role="TCharacter" EntitySet="Characters" />
+            <End Role="TCharacterQuest" EntitySet="CharacterQuests" />
+          </AssociationSet>
+          <AssociationSet Name="CharacterFriend" Association="DataModel.CharacterFriend">
+            <End Role="TCharacter" EntitySet="Characters" />
+            <End Role="TCharacterFriend" EntitySet="CharacterFriends" />
+          </AssociationSet>
+          <AssociationSet Name="GuildMember" Association="DataModel.GuildMember">
+            <End Role="TGuild" EntitySet="Guilds" />
+            <End Role="TGuildMember" EntitySet="GuildMembers" />
+          </AssociationSet>
+          <AssociationSet Name="GuildApply" Association="DataModel.GuildApply">
+            <End Role="TGuild" EntitySet="Guilds" />
+            <End Role="TGuildApply" EntitySet="GuildApplies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Player" Relationship="DataModel.UserPlayer" FromRole="TUser" ToRole="TPlayer" />
+        </EntityType>
+        <EntityType Name="TPlayer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.UserPlayer" FromRole="TPlayer" ToRole="TUser" />
+          <NavigationProperty Name="Characters" Relationship="DataModel.PlayerCharacter" FromRole="TPlayer" ToRole="TCharacter" />
+        </EntityType>
+        <EntityType Name="TCharacter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="Exp" Type="Int64" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Gold" Type="Int64" Nullable="false" />
+          <Property Name="Equips" Type="Binary" Nullable="false" MaxLength="28" FixedLength="true" />
+          <Property Name="MapID" Type="Int32" Nullable="false" DefaultValue="1" />
+          <Property Name="MapPosX" Type="Int32" Nullable="false" />
+          <Property Name="MapPosY" Type="Int32" Nullable="false" />
+          <Property Name="MapPosZ" Type="Int32" Nullable="false" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.PlayerCharacter" FromRole="TCharacter" ToRole="TPlayer" />
+          <NavigationProperty Name="Items" Relationship="DataModel.CharacterItem" FromRole="TCharacter" ToRole="TCharacterItem" />
+          <NavigationProperty Name="Bag" Relationship="DataModel.CharacterBag" FromRole="TCharacter" ToRole="TCharacterBag" />
+          <NavigationProperty Name="Quests" Relationship="DataModel.CharacterQuest" FromRole="TCharacter" ToRole="TCharacterQuest" />
+          <NavigationProperty Name="Friends" Relationship="DataModel.CharacterFriend" FromRole="TCharacter" ToRole="TCharacterFriend" />
+        </EntityType>
+        <EntityType Name="TCharacterItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.CharacterItem" FromRole="TCharacterItem" ToRole="TCharacter" />
+        </EntityType>
+        <EntityType Name="TCharacterBag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Items" Type="Binary" Nullable="false" />
+          <Property Name="Unlocked" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.CharacterBag" FromRole="TCharacterBag" ToRole="TCharacter" />
+        </EntityType>
+        <EntityType Name="TCharacterQuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="QuestID" Type="Int32" Nullable="false" />
+          <Property Name="Target1" Type="Int32" Nullable="false" />
+          <Property Name="Target2" Type="Int32" Nullable="false" />
+          <Property Name="Target3" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.CharacterQuest" FromRole="TCharacterQuest" ToRole="TCharacter" />
+        </EntityType>
+        <EntityType Name="TCharacterFriend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
+          <Property Name="FriendName" Type="String" Nullable="false" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="DataModel.CharacterFriend" FromRole="TCharacterFriend" ToRole="TCharacter" />
+        </EntityType>
+        <EntityType Name="TGuild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="LeaderID" Type="Int32" Nullable="false" />
+          <Property Name="LeaderName" Type="String" Nullable="false" />
+          <Property Name="Notice" Type="String" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="DataModel.GuildMember" FromRole="TGuild" ToRole="TGuildMember" />
+          <NavigationProperty Name="Applies" Relationship="DataModel.GuildApply" FromRole="TGuild" ToRole="TGuildApply" />
+        </EntityType>
+        <EntityType Name="TGuildMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
+          <Property Name="CharacterId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="Int32" Nullable="false" />
+          <Property Name="JoinTime" Type="DateTime" Nullable="false" />
+          <Property Name="LastTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Guild" Relationship="DataModel.GuildMember" FromRole="TGuildMember" ToRole="TGuild" />
+        </EntityType>
+        <EntityType Name="TGuildApply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
+          <Property Name="CharacterId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Result" Type="Int32" Nullable="false" />
+          <Property Name="ApplyTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Guild" Relationship="DataModel.GuildApply" FromRole="TGuildApply" ToRole="TGuild" />
+        </EntityType>
+        <Association Name="UserPlayer">
+          <End Type="DataModel.TUser" Role="TUser" Multiplicity="0..1" />
+          <End Type="DataModel.TPlayer" Role="TPlayer" Multiplicity="1" />
+        </Association>
+        <Association Name="PlayerCharacter">
+          <End Type="DataModel.TPlayer" Role="TPlayer" Multiplicity="1" />
+          <End Type="DataModel.TCharacter" Role="TCharacter" Multiplicity="*" />
+        </Association>
+        <Association Name="CharacterItem">
+          <End Type="DataModel.TCharacter" Role="TCharacter" Multiplicity="1" />
+          <End Type="DataModel.TCharacterItem" Role="TCharacterItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCharacter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TCharacterItem">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CharacterBag">
+          <End Type="DataModel.TCharacter" Role="TCharacter" Multiplicity="1" />
+          <End Type="DataModel.TCharacterBag" Role="TCharacterBag" Multiplicity="1" />
+        </Association>
+        <Association Name="CharacterQuest">
+          <End Type="DataModel.TCharacter" Role="TCharacter" Multiplicity="1" />
+          <End Type="DataModel.TCharacterQuest" Role="TCharacterQuest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCharacter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TCharacterQuest">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CharacterFriend">
+          <End Type="DataModel.TCharacter" Role="TCharacter" Multiplicity="1" />
+          <End Type="DataModel.TCharacterFriend" Role="TCharacterFriend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCharacter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TCharacterFriend">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GuildMember">
+          <End Type="DataModel.TGuild" Role="TGuild" Multiplicity="1" />
+          <End Type="DataModel.TGuildMember" Role="TGuildMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TGuild">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TGuildMember">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GuildApply">
+          <End Type="DataModel.TGuild" Role="TGuild" Multiplicity="1" />
+          <End Type="DataModel.TGuildApply" Role="TGuildApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TGuild">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TGuildApply">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TUser)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TPlayer)">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TCharacter)">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="Equips" ColumnName="Equips" />
+          <ScalarProperty Name="MapID" ColumnName="MapID" />
+          <ScalarProperty Name="MapPosX" ColumnName="MapPosX" />
+          <ScalarProperty Name="MapPosY" ColumnName="MapPosY" />
+          <ScalarProperty Name="MapPosZ" ColumnName="MapPosZ" />
+          <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterItems">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TCharacterItem)">
+        <MappingFragment StoreEntitySet="CharacterItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterBags">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TCharacterBag)">
+        <MappingFragment StoreEntitySet="CharacterBags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Items" ColumnName="Items" />
+          <ScalarProperty Name="Unlocked" ColumnName="Unlocked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterQuests">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TCharacterQuest)">
+        <MappingFragment StoreEntitySet="CharacterQuests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="QuestID" ColumnName="QuestID" />
+          <ScalarProperty Name="Target1" ColumnName="Target1" />
+          <ScalarProperty Name="Target2" ColumnName="Target2" />
+          <ScalarProperty Name="Target3" ColumnName="Target3" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterFriends">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TCharacterFriend)">
+        <MappingFragment StoreEntitySet="CharacterFriends">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="FriendID" ColumnName="FriendID" />
+          <ScalarProperty Name="FriendName" ColumnName="FriendName" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guilds">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TGuild)">
+        <MappingFragment StoreEntitySet="Guilds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LeaderID" ColumnName="LeaderID" />
+          <ScalarProperty Name="LeaderName" ColumnName="LeaderName" />
+          <ScalarProperty Name="Notice" ColumnName="Notice" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GuildMembers">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TGuildMember)">
+        <MappingFragment StoreEntitySet="GuildMembers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+          <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="JoinTime" ColumnName="JoinTime" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GuildApplies">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TGuildApply)">
+        <MappingFragment StoreEntitySet="GuildApplies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+          <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="ApplyTime" ColumnName="ApplyTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserPlayer" TypeName="DataModel.UserPlayer" StoreEntitySet="Users">
+      <EndProperty Name="TPlayer">
+        <ScalarProperty Name="ID" ColumnName="Player_ID" />
+      </EndProperty>
+      <EndProperty Name="TUser">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlayerCharacter" TypeName="DataModel.PlayerCharacter" StoreEntitySet="Characters">
+      <EndProperty Name="TPlayer">
+        <ScalarProperty Name="ID" ColumnName="Owner_ID" />
+      </EndProperty>
+      <EndProperty Name="TCharacter">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CharacterBag" TypeName="DataModel.CharacterBag" StoreEntitySet="Characters">
+      <EndProperty Name="TCharacterBag">
+        <ScalarProperty Name="Id" ColumnName="Bag_Id" />
+      </EndProperty>
+      <EndProperty Name="TCharacter">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
