@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ITXCM.Client.Models
 {
-    internal class User : Singleton<User>
+    public class User : Singleton<User>
     {
         #region 用户信息
 

@@ -33,7 +33,7 @@ namespace GameServer.Services
             if (user != null)
             {
                 msg.Result = Result.Failed;
-                msg.Errormsg = "用户已存在";
+                msg.Errormsg = "用户已存在！";
             }
             else
             {
@@ -42,7 +42,7 @@ namespace GameServer.Services
                 DBService.Instance.Entities.SaveChanges();
 
                 msg.Result = Result.Success;
-                msg.Errormsg = "None";
+                msg.Errormsg = "注册成功！";
             }
             client.SendResponse();
         }
@@ -60,12 +60,12 @@ namespace GameServer.Services
             if (user == null)
             {
                 msg.Result = Result.Failed;
-                msg.Errormsg = "用户不存在";
+                msg.Errormsg = "用户不存在！";
             }
             else if (user.Password != request.Passward)
             {
                 msg.Result = Result.Failed;
-                msg.Errormsg = "密码错误";
+                msg.Errormsg = "密码错误！";
             }
             /*           else if (user.Player.Characters.Count != 0 && SessionManager.Instance.GetSession(GetNCharacter(user.Player.Characters.ElementAt(0)).Id) != null)
                        {
@@ -78,7 +78,7 @@ namespace GameServer.Services
                 client.Session.User = user; // 记录到会话中
 
                 msg.Result = Result.Success;
-                msg.Errormsg = "None";
+                msg.Errormsg = "登录成功！";
 
                 msg.Userinfo = new NUserInfo { Id = (int)user.ID, Player = new NPlayerInfo { Id = user.Player.ID } };
 
@@ -139,7 +139,7 @@ namespace GameServer.Services
                 foreach (var item in client.Session.User.Player.Characters) msg.Characters.Add(GetNCharacter(item));
 
                 msg.Result = Result.Success;
-                msg.Errormsg = "None";
+                msg.Errormsg = "创建角色成功！";
             }
 
             client.SendResponse();

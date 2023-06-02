@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 namespace ITXCM
 {
-    [AddComponentMenu("NetClient")]
+    [AddComponentMenu("ITXCM/Client/NetClient")]
     internal class NetClient : MonoSingleton<NetClient>
     {
         #region 外部自定义配置
